@@ -47,16 +47,15 @@ export default class Login extends Component {
             <div>
                 This is the login Page
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='username'>Username</label>
-                    <input type="text" placeholder='username' value={this.state.username} onChange={this.handleChange} id='username'/>
-                    <label htmlFor='password'>Password</label>
-                    <input type="password" placeholder='password' value={this.state.password} onChange={this.handleChange} id='password'/>
+                    {/* <label htmlFor='username'>Username</label>
+                    <input type="text" placeholder='username' value={this.state.username} onChange={this.handleChange} id='username'/> */}
                     <label htmlFor='email'>Email</label>
                     <input type="text" placeholder='email' value={this.state.email} onChange={this.handleChange} id='email'/>
                     
-                    <button type='submit'>Sign Up</button>
+                    <label htmlFor='password'>Password</label>
+                    <input type="password" placeholder='password' value={this.state.password} onChange={this.handleChange} id='password'/>
+                    
                     <button type='submit'>Log In</button>
-                    {/* <a href={this.state.searchURL}>link here</a> */}
                 </form>
             </div>
         )

@@ -1,5 +1,6 @@
 import React from 'react'
 import Login from './components/Login'
+import Register from './components/Register'
 
 let BASE_URL = ''
 BASE_URL = 'http://localhost:8000'
@@ -8,9 +9,10 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      // username: '',
-      // password: '',
-      // email: ''
+      current_user: {
+        username: '',
+        email: ''
+      }
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -25,6 +27,7 @@ class App extends React.Component {
     return (
     <div className='container'>
       <Login baseURL={BASE_URL}/>
+      <Register baseURL={BASE_URL}/>
     </div>
     )
   }
