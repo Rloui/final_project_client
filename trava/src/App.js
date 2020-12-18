@@ -1,6 +1,8 @@
 import React from 'react'
 import Login from './components/Login'
 import Register from './components/Register'
+import CreateTrip from './components/CreateTrip'
+import Logout from './components/Logout'
 
 let BASE_URL = ''
 BASE_URL = 'http://localhost:8000'
@@ -27,7 +29,11 @@ class App extends React.Component {
     return (
     <div className='container'>
       <Login baseURL={BASE_URL}/>
+      <br />
       <Register baseURL={BASE_URL}/>
+      <br />
+      <CreateTrip baseURL={BASE_URL}/>
+      <Logout baseURL={BASE_URL} />
     </div>
     )
   }

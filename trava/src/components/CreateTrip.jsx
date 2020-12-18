@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 
-export default class Login extends Component {
+export class CreateTrip extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: '',
-            email: '',
-            searchURL: ''
+            destination: '',
+            date: '',
+            budget: '',
+            created_at: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
     handleChange(e) {
         this.setState({[e.target.id] : e.target.value})
     }
@@ -21,15 +20,16 @@ export default class Login extends Component {
         e.preventDefault()
         // console.log('you prevented the default')
         this.setState({
-            searchURL: this.props.baseURL + '/user/login'
+            searchURL: this.props.baseURL + '/api/v1/trips/'
         }, () => {
             console.log(this.state.searchURL)
             fetch(this.state.searchURL, {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify({
-                    email: this.state.email,
-                    password: this.state.password
+                    destination: this.state.destination,
+                    date: this.state.date,
+                    budget: this.state.budget
                 }),
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,18 +46,22 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                This is the login Page
+                This is the Create Trip Page
                 <form onSubmit={this.handleSubmit}>
-        
-                    <label htmlFor='email'>Email</label>
-                    <input type="text" placeholder='email' value={this.state.email} onChange={this.handleChange} id='email'/>
+                    <label htmlFor='destination'>Destination</label>
+                    <input type="text" placeholder='destination' value={this.state.destination} onChange={this.handleChange} id='destination'/>
+
+                    <label htmlFor='date'>Date</label>
+                    <input type="date" placeholder='date' value={this.state.date} onChange={this.handleChange} id='date'/>
+
+                    <label htmlFor='budget'>Budget</label>
+                    <input type="text" placeholder='budget' value={this.state.budget} onChange={this.handleChange} id='budget'/>
                     
-                    <label htmlFor='password'>Password</label>
-                    <input type="password" placeholder='password' value={this.state.password} onChange={this.handleChange} id='password'/>
-                    
-                    <button type='submit'>Log In</button>
+                    <button type='submit'>Create New</button>
                 </form>
             </div>
         )
     }
 }
+
+export default CreateTrip

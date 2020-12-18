@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 
-export default class Login extends Component {
+export class Logout extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: '',
-            email: '',
-            searchURL: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,16 +17,12 @@ export default class Login extends Component {
         e.preventDefault()
         // console.log('you prevented the default')
         this.setState({
-            searchURL: this.props.baseURL + '/user/login'
+            searchURL: this.props.baseURL + '/user/logout'
         }, () => {
             console.log(this.state.searchURL)
             fetch(this.state.searchURL, {
-                method: 'POST',
+                method: 'GET',
                 credentials: 'include',
-                body: JSON.stringify({
-                    email: this.state.email,
-                    password: this.state.password
-                }),
                 headers: {
                     'Content-Type': 'application/json',
                     'x-access-token': localStorage.getItem('token')
@@ -46,18 +38,14 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                This is the login Page
+                This is the logout Page
                 <form onSubmit={this.handleSubmit}>
-        
-                    <label htmlFor='email'>Email</label>
-                    <input type="text" placeholder='email' value={this.state.email} onChange={this.handleChange} id='email'/>
                     
-                    <label htmlFor='password'>Password</label>
-                    <input type="password" placeholder='password' value={this.state.password} onChange={this.handleChange} id='password'/>
-                    
-                    <button type='submit'>Log In</button>
+                    <button type='submit'>Log Out</button>
                 </form>
             </div>
         )
     }
 }
+
+export default Logout
