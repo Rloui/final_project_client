@@ -1,6 +1,9 @@
 import React from 'react'
 import Login from './components/Login'
 
+let BASE_URL = ''
+BASE_URL = 'http://localhost:8000'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -21,7 +24,7 @@ class App extends React.Component {
   render() {
     return (
     <div className='container'>
-      <Login />
+      <Login baseURL={BASE_URL}/>
     </div>
     )
   }
